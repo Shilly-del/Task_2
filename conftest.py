@@ -13,7 +13,7 @@ def user():
 
 
 @pytest.fixture(scope='class')
-def user():
+def user_class():
 
     user = User()
     user.register_user()
@@ -23,7 +23,7 @@ def user():
 
 
 @pytest.fixture(scope='class')
-def user_class():
+def user_class_logout():
 
     user = User()
     user.register_user()

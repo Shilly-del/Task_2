@@ -3,7 +3,7 @@ import pytest
 import allure
 
 from constants import *
-from helpers.user_gen import *
+from helpers.data_gen import *
 
 
 class TestLoginUser:
@@ -23,13 +23,13 @@ class TestLoginUser:
 
     @pytest.mark.parametrize('key', ["email", "password"])
     @allure.title('Проверка авторизации с неверным логином и паролем')
-    def test_incorrect_login(self, user_class, key):
+    def test_incorrect_login(self, user_class_logout, key):
         """
         Регистрируем пользователя, выходим и отправляем запросы меняя одно из полей.
         """
         payload = {
-            "email": user_class.email,
-            "password": user_class.password
+            "email": user_class_logout.email,
+            "password": user_class_logout.password
         }
         wrong = create_incorrect_field(payload, key)
         log = requests.post(Url.LOGIN, data=wrong)

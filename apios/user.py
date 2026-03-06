@@ -2,7 +2,7 @@ import requests
 import allure
 
 from constants import Url
-from helpers.user_gen import *
+from helpers.data_gen import *
 
 
 class User:
@@ -37,8 +37,12 @@ class User:
 
     @allure.step('Авторизация')
     def login(self):
-        headers = {'authorization': self.token}
-        r = requests.delete(Url.LOGIN, headers=headers)
+        payload = {
+            "email": self.email,
+            "password": self.password
+        }
+        r = requests.post(Url.LOGIN, data=payload)
+        self.token = r.json()['accessToken']
 
     @allure.step('Получение доступных ингредиентов')
     def get_ingredients(self):

@@ -4,7 +4,7 @@ import allure
 
 from apios.user import *
 from constants import *
-from helpers.user_gen import *
+from helpers.data_gen import *
 
 
 class TestChangeUserData:

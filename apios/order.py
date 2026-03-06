@@ -3,7 +3,7 @@ import allure
 import string
 
 from constants import Url
-from helpers.user_gen import *
+from helpers.data_gen import *
 
 
 class Order:
