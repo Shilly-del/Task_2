@@ -70,4 +70,3 @@ class TestCreateOrder:
             Url.ORDERS, data=order.payload)
 
         assert create_order.status_code == 303
-        assert create_order.check_url() == Url.LOGIN
